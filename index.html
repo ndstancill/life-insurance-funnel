@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Life Insurance That Fits Your Life | Nathan Stancill</title>
+    <meta name="description" content="Compare life insurance quotes from top carriers. Fast quotes, no medical exam options, and expert guidance available.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .lead-capture {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .lead-capture h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .form-group input {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .platform-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+        
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .platform-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .platform-card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .platform-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .platform-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .trust-badges {
+            text-align: center;
+            margin-top: 50px;
+            color: rgba(255,255,255,0.9);
+        }
+        
+        .trust-badges h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .platforms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px;
+        }
+        
+        .popup h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .popup p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+        
+        .close-popup {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Get Life Insurance That Fits Your Life</h1>
+            <p>Compare quotes from top carriers • Fast approval • Expert guidance</p>
+        </div>
+        
+        <div class="lead-capture">
+            <h2>Get Your Free Quote in 60 Seconds</h2>
+            <p>Enter your info below and we'll show you the best options for your situation</p>
+            <form id="leadForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Full Name" required>
+                    <input type="email" id="email" placeholder="Your Email Address" required>
+                </div>
+                <button type="submit" class="cta-button">Get My Free Quote</button>
+            </form>
+        </div>
+        
+        <div class="platforms-grid">
+            <div class="platform-card">
+                <div class="platform-icon">⚡</div>
+                <h3>Fast Term Life</h3>
+                <p>Get covered in minutes with no medical exam required. Perfect for busy parents and professionals who need coverage fast.</p>
+                <a href="https://www.helloplum.com/agent/stancill-5834?product=accelerated" class="platform-button" target="_blank">Get 5-Minute Quote</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">🏆</div>
+                <h3>Compare Top Carriers</h3>
+                <p>See quotes from 20+ top-rated insurance companies side-by-side. Find the best rates for your age and health.</p>
+                <a href="https://app.back9ins.com/apply/NathanStancill" class="platform-button" target="_blank">Compare Quotes</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">❤️</div>
+                <h3>Final Expense Plans</h3>
+                <p>Affordable burial insurance for seniors 50-85. No medical exam, guaranteed acceptance available.</p>
+                <a href="https://mymaildeals.com/slg" class="platform-button" target="_blank">Get Senior Coverage</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">⭐</div>
+                <h3>Instant Coverage</h3>
+                <p>Apply online and get approved in minutes. Coverage starts immediately with our digital-first approach.</p>
+                <a href="https://agents.ethoslife.com/invite/36289" class="platform-button" target="_blank">Apply Instantly</a>
+            </div>
+            
+            <div class="platform-card">
+                <div class="platform-icon">💼</div>
+                <h3>Expert Guidance</h3>
+                <p>Need help choosing? Get personalized advice on term vs whole life, coverage amounts, and policy features.</p>
+                <a href="https://www.policygenius.com/pro/referral/stancill?advisor=Nathan%20Dail-Stancill&uuid=a1ffc1ff-8a95-40a3-92b4-6ba5107c2a12" class="platform-button" target="_blank">Talk to Expert</a>
+            </div>
+        </div>
+        
+        <div class="trust-badges">
+            <h3>Trusted by Thousands of Families</h3>
+            <div class="badges">
+                <div class="badge">A+ Rated Carriers</div>
+                <div class="badge">Licensed Agent</div>
+                <div class="badge">No Hidden Fees</div>
+                <div class="badge">Free Quotes</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2024 Nathan Stancill Insurance Services. Licensed insurance professional.</p>
+            <p>Quotes are free and comparison shopping helps you save money.</p>
+        </div>
+    </div>
+    
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h3>Thank You!</h3>
+            <p>Your information has been received. You'll hear from us within 24 hours with your personalized quote options.</p>
+            <p><strong>What's next?</strong> Choose one of the options above to get started immediately, or wait for our personalized recommendations.</p>
+            <button class="close-popup" onclick="closePopup()">Continue</button>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Here you would normally send this data to your email service
+            // For now, we'll just show the popup and store in localStorage
+            
+            // Store lead data (in a real implementation, send to your email service)
+            const leadData = {
+                name: name,
+                email: email,
+                timestamp: new Date().toISOString(),
+                source: 'funnel-page'
+            };
+            
+            // Store locally (replace with actual email service integration)
+            let leads = JSON.parse(localStorage.getItem('leads') || '[]');
+            leads.push(leadData);
+            localStorage.setItem('leads', JSON.stringify(leads));
+            
+            // Show success popup
+            document.getElementById('popup').style.display = 'flex';
+            
+            // Reset form
+            document.getElementById('leadForm').reset();
+            
+            // Optional: Redirect to a specific platform after a delay
+            setTimeout(() => {
+                // You can customize this to redirect to your highest-converting platform
+                // window.location.href = "https://www.helloplum.com/agent/stancill-5834?product=accelerated";
+            }, 3000);
+        });
+        
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+        
+        // Close popup when clicking outside
+        document.getElementById('popup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+        
+        // Track button clicks (replace with your analytics)
+        document.querySelectorAll('.platform-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const platform = this.closest('.platform-card').querySelector('h3').textContent;
+                console.log('Platform clicked:', platform);
+                // Add your analytics tracking here
+            });
+        });
+    </script>
+</body>
+</html>
