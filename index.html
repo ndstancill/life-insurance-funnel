@@ -17,7 +17,9 @@
 
   <!-- Hero -->
   <section class="max-w-3xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold">Lock in your life insurance rate in <span class="underline decoration-emerald-400">60 seconds</span>.</h1>
+    <h1 class="text-3xl font-bold">
+      Lock in your life insurance rate in <span class="underline decoration-emerald-400">60 seconds</span>.
+    </h1>
     <p class="mt-3">Instant options from A+ carriers. No medical exam. Local, licensed help.</p>
     <ul class="mt-4 space-y-1">
       <li>✔ Protect income, mortgage & debts</li>
@@ -26,46 +28,46 @@
     </ul>
   </section>
 
-  <!-- QUOTE FORM (emails you via FormSubmit) -->
-<section id="quick-quote" class="max-w-3xl mx-auto px-4">
-  <div class="bg-white border rounded-2xl p-5">
-    <h2 class="text-xl font-semibold mb-3">Get your 60-second quote</h2>
+  <!-- QUOTE FORM -->
+  <section id="quick-quote" class="max-w-3xl mx-auto px-4">
+    <div class="bg-white border rounded-2xl p-5 shadow">
+      <h2 class="text-xl font-semibold mb-3">Get your 60-second quote</h2>
 
-    <!-- IMPORTANT: this posts to your FormSubmit endpoint and returns to THIS page -->
-    <form action="https://formsubmit.co/el/fihide" method="POST" class="grid gap-3">
-  <!-- ✅ keep ONLY this _next (project path) -->
-  
-  <input type="hidden" name="_subject" value="New Life Insurance Lead">
-  <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_captcha" value="false">
+      <!-- ✅ This posts to FormSubmit and returns to your page -->
+      <form action="https://formsubmit.co/el/fihide" method="POST" class="grid gap-3">
+        <input type="hidden" name="_subject" value="New Life Insurance Lead">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/#quick-quote">
 
-  <input class="border rounded-xl px-4 py-3" name="Full Name" placeholder="Full name" required>
-  <input class="border rounded-xl px-4 py-3" name="Phone" placeholder="Mobile phone" required>
-  <input class="border rounded-xl px-4 py-3" type="email" name="Email" placeholder="Email (optional)">
-  <div class="grid grid-cols-2 gap-3">
-    <input class="border rounded-xl px-4 py-3" name="ZIP" placeholder="ZIP" required>
-    <select class="border rounded-xl px-4 py-3" name="Age Range" required>
-      <option value="" disabled selected>Age</option>
-      <option>18-24</option><option>25-34</option><option>35-44</option>
-      <option>45-54</option><option>55-64</option><option>65+</option>
-    </select>
-  </div>
+        <input class="border rounded-xl px-4 py-3" name="Full Name" placeholder="Full name" required>
+        <input class="border rounded-xl px-4 py-3" name="Phone" placeholder="Mobile phone" required>
+        <input class="border rounded-xl px-4 py-3" type="email" name="Email" placeholder="Email (optional)">
+        <div class="grid grid-cols-2 gap-3">
+          <input class="border rounded-xl px-4 py-3" name="ZIP" placeholder="ZIP" required>
+          <select class="border rounded-xl px-4 py-3" name="Age Range" required>
+            <option value="" disabled selected>Age</option>
+            <option>18-24</option><option>25-34</option><option>35-44</option>
+            <option>45-54</option><option>55-64</option><option>65+</option>
+          </select>
+        </div>
 
-  <button class="bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl px-6 py-3">
-    Get My Instant Options
-  </button>
-    </form>
-    <p class="text-xs text-slate-500 mt-2">
-      By submitting, you agree to get a personal reply from Dail by phone/text. No spam.
-    </p>
+        <button class="bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl px-6 py-3">
+          Get My Instant Options
+        </button>
+      </form>
 
-    <!-- Instant SMS fallback -->
-    <a class="mt-3 inline-block bg-slate-900 text-white rounded-xl px-4 py-2"
-       href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote.">
-      📲 Or text me my quote
-    </a>
-  </div>
-</section>
+      <p class="text-xs text-slate-500 mt-2">
+        By submitting, you agree to get a personal reply from Dail by phone/text. No spam.
+      </p>
+
+      <!-- SMS fallback -->
+      <a class="mt-3 inline-block bg-slate-900 text-white rounded-xl px-4 py-2"
+         href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote.">
+         📲 Or text me my quote
+      </a>
+    </div>
+  </section>
 
   <!-- Partner Links -->
   <section class="max-w-3xl mx-auto px-4 py-8">
@@ -77,8 +79,8 @@
       <a class="border rounded-xl p-4 hover:shadow" href="https://back9ins.com" target="_blank" rel="noopener">
         <b>Back9</b><div class="text-sm text-slate-600">Multi-Carrier Quotes</div>
       </a>
-      <a class="border rounded-xl p-4 hover:shadow" href="https://helloplum.com" target="_blank" rel="noopener">
-        <b>Hello Plum</b><div class="text-sm text-slate-600">No-Exam Policies</div>
+      <a class="border rounded-xl p-4 hover:shadow" href="https://hellosimplicity.com" target="_blank" rel="noopener">
+        <b>Simplicity</b><div class="text-sm text-slate-600">No-Exam Policies</div>
       </a>
       <a class="border rounded-xl p-4 hover:shadow" href="https://policygenius.com/life-insurance/" target="_blank" rel="noopener">
         <b>Policygenius</b><div class="text-sm text-slate-600">Compare Rates</div>
@@ -86,7 +88,7 @@
     </div>
   </section>
 
-  <!-- Tiny “thanks” toast if returned from FormSubmit -->
+  <!-- Thank-you toast -->
   <script>
     (function () {
       const p = new URLSearchParams(location.search);
