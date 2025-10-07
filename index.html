@@ -1,40 +1,87 @@
-<!doctype html>
+   <!-- ✅ QUICK QUOTE FORM + PARTNER OPTIONS (fixed) -->
+<section id="quick-quote" class="py-10 bg-white border-b border-slate-200">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-slate-900 text-center">
+      Get Your 60-Second Life Insurance Quote
+    </h2>
+    <p class="text-center text-slate-600 mt-2">
+      Your info comes straight to Dail — no spam, no call center. Or choose one of our trusted partners below.
+    </p>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Virginia Life Insurance Quotes | 60‑Second Instant Rate | Dail Stancill</title>
-  <meta name="description" content="Lock in your life insurance rate in 60 seconds. No exam. Instant options from A+ carriers. Serving Virginia. Get protected today with Dail Stancill, licensed agent." />
-  <meta property="og:title" content="Get Your Life Insurance Rate in 60 Seconds" />
-  <meta property="og:description" content="Instant options from A+ carriers. No exam. Local licensed agent in Virginia." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ndstancill.github.io/life-insurance-funnel/" />
-  <meta name="theme-color" content="#0f172a" />  <!-- Tailwind CDN for fast styling -->  <script src="https://cdn.tailwindcss.com"></script>  <style>
-    /* Fallbacks for Tailwind not loading */
-    .no-tailwind body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, Helvetica, "Apple Color Emoji", "Segoe UI Emoji"; }
-  </style>  <!-- Google Analytics (optional): replace G-XXXXXXX -->  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXX');
-  </script> --></head><body class="bg-slate-50 text-slate-900">
-  <!-- Sticky top bar -->
-  <div class="w-full bg-slate-900 text-white text-sm py-2">
-    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      <p class="opacity-90">Licensed agent: <strong>Dail Stancill, PE</strong> • VA</p>
-      <a href="tel:15402394791" class="inline-flex items-center gap-2 text-white/90 hover:text-white underline">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.494a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.494 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-        Call now: 540‑239‑4791
+    <!-- FORM: sends to FormSubmit and returns to the SAME page (no 404) -->
+    <form action="https://formsubmit.co/el/fihide" method="POST"
+      class="mt-8 grid grid-cols-1 gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-200 shadow-sm">
+
+      <!-- IMPORTANT: redirect back to the correct project path -->
+      <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/?submitted=1#quick-quote">
+      <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+
+      <input type="text" name="Full Name" placeholder="Full Name" required
+        class="px-4 py-3 rounded-xl border border-slate-300" />
+      <input type="tel" name="Phone" placeholder="Mobile Phone" required
+        class="px-4 py-3 rounded-xl border border-slate-300" />
+      <input type="email" name="Email" placeholder="Email (optional)"
+        class="px-4 py-3 rounded-xl border border-slate-300" />
+      <input type="text" name="ZIP" placeholder="ZIP Code" required
+        class="px-4 py-3 rounded-xl border border-slate-300" />
+      <select name="Age Range" required
+        class="px-4 py-3 rounded-xl border border-slate-300 text-slate-700">
+        <option disabled selected>Age Range</option>
+        <option>18-24</option><option>25-34</option><option>35-44</option>
+        <option>45-54</option><option>55-64</option><option>65+</option>
+      </select>
+
+      <button type="submit"
+        class="mt-2 w-full bg-emerald-500 hover:bg-emerald-400 text-white font-semibold py-3 rounded-xl transition">
+        📩 Get My 60-Second Quote
+      </button>
+
+      <p class="text-xs text-slate-500 text-center mt-2">
+        By submitting, you agree to receive a personal reply from Dail Stancill to review your quote.
+      </p>
+    </form>
+
+    <!-- 4 PARTNER BUTTONS (use real URLs; these are examples that will open) -->
+    <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center">
+      <a href="https://ethoslife.com" target="_blank" rel="noopener"
+        class="p-4 rounded-xl border border-slate-200 hover:shadow transition">
+        <p class="font-semibold">Ethos</p>
+        <p class="text-sm text-slate-500">Term & Final Expense</p>
+      </a>
+      <a href="https://back9ins.com" target="_blank" rel="noopener"
+        class="p-4 rounded-xl border border-slate-200 hover:shadow transition">
+        <p class="font-semibold">Back9</p>
+        <p class="text-sm text-slate-500">Multi-Carrier Quotes</p>
+      </a>
+      <a href="https://helloplum.com" target="_blank" rel="noopener"
+        class="p-4 rounded-xl border border-slate-200 hover:shadow transition">
+        <p class="font-semibold">Hello Plum</p>
+        <p class="text-sm text-slate-500">No-Exam Policies</p>
+      </a>
+      <a href="https://policygenius.com/life-insurance/" target="_blank" rel="noopener"
+        class="p-4 rounded-xl border border-slate-200 hover:shadow transition">
+        <p class="font-semibold">Policygenius</p>
+        <p class="text-sm text-slate-500">Compare Rates</p>
       </a>
     </div>
-  </div>  <!-- Hero -->  <header class="relative overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700"></div>
-    <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 text-white">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h1 class="text-3xl md:text-5xl font-bold leading-tight">Lock in your life insurance rate in <span class="underline decoration-emerald-400">60 seconds</span>.</h1>
-          <p class="mt-4 text-white/90 text-lg">Instant options from <strong>A+ carriers</strong>. No medical exam. Local, licensed help when you want it.</p>
-          <ul class="mt-6 space-y-2 text-white/85">
+  </div>
+</section>
+
+<!-- tiny toast on return -->
+<script>
+  (function () {
+    const p = new URLSearchParams(location.search);
+    if (p.get('submitted') === '1') {
+      const note = document.createElement('div');
+      note.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg z-50';
+      note.textContent = 'Thanks! Your request was received — I will text you shortly.';
+      document.body.appendChild(note);
+      setTimeout(() => note.remove(), 5000);
+    }
+  })();
+</script>       <ul class="mt-6 space-y-2 text-white/85">
             <li class="flex gap-3"><span class="text-emerald-300">✔</span> Protect income, mortgage & debts</li>
             <li class="flex gap-3"><span class="text-emerald-300">✔</span> Same‑day approvals available</li>
             <li class="flex gap-3"><span class="text-emerald-300">✔</span> Compare multiple carriers — your choice</li>
