@@ -49,7 +49,12 @@
           <p class="text-white/90 text-sm mb-2">Fast Start</p>
           <h2 class="text-xl font-semibold mb-4">60‑Second Quote</h2>
           <!-- Minimal first-step form -->
-          <form id="leadForm" class="grid grid-cols-1 gap-4" autocomplete="on">
+          <form id="leadForm" action="https://formsubmit.co/el/fihide" method="POST" class="grid grid-cols-1 gap-4" autocomplete="on">
+            <input type="hidden" name="_subject" value="New Life Insurance Lead" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/?submitted=1#quote" />
+            <input type="hidden" name="form_type" value="lead" />
             <input type="text" name="full_name" placeholder="Full name" required class="px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 border border-slate-200" />
             <input type="tel" name="phone" placeholder="Mobile phone" required pattern="[0-9()+\-\s]{7,}" class="px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 border border-slate-200" />
             <input type="email" name="email" placeholder="Email (optional)" class="px-4 py-3 rounded-xl bg-white text-slate-900 placeholder-slate-500 border border-slate-200" />
@@ -121,7 +126,12 @@
     <div class="max-w-3xl mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Quick qualification (30 seconds)</h2>
       <p class="text-slate-600 mt-2">This helps match you to the best rate. Options below.</p>
-      <form id="qualForm" class="mt-6 grid gap-4">
+      <form id="qualForm" action="https://formsubmit.co/el/fihide" method="POST" class="mt-6 grid gap-4">
+        <input type="hidden" name="_subject" value="Qualification Details" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/?submitted=1#quote" />
+        <input type="hidden" name="form_type" value="qual" />
         <div class="grid md:grid-cols-2 gap-4">
           <label class="block">
             <span class="text-sm text-slate-600">Coverage amount</span>
@@ -259,68 +269,18 @@
     });
 
     // ---- FORM HANDLERS ----
-    // Replace with your real endpoint (Formspree / Make / Zapier webhook)
-    const FORM_ENDPOINT = "https://formspree.io/f/REPLACE_ME"; // e.g., https://formspree.io/f/abcdwxyz
-
-    function postJSON(url, data){
-      return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-    }
-
-    // Step 1 lead form
-    const leadForm = document.getElementById('leadForm');
-    const formSuccess = document.getElementById('formSuccess');
-    leadForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const fd = new FormData(leadForm);
-      // Honeypot check
-      if ((fd.get('company') || '').trim() !== '') return;
-      const payload = {
-        type: 'lead',
-        ts: new Date().toISOString(),
-        full_name: fd.get('full_name'),
-        phone: fd.get('phone'),
-        email: fd.get('email') || '',
-        zip: fd.get('zip'),
-        age: fd.get('age'),
-        page: location.href,
-        ua: navigator.userAgent
-      };
-      try {
-        await postJSON(FORM_ENDPOINT, payload);
-        leadForm.classList.add('hidden');
-        formSuccess.classList.remove('hidden');
-      } catch(err) {
-        alert('Thanks! If the form failed to submit, just text me at 540-239-4791.');
+    // We now submit both forms via regular POST to FormSubmit (no JS interception)
+    // Show a small toast after redirect back with ?submitted=1
+    (function(){
+      const params=new URLSearchParams(location.search);
+      if(params.get('submitted')==='1'){
+        const note=document.createElement('div');
+        note.className='fixed bottom-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg z-50';
+        note.textContent='Thanks! Your request was received — I will call/text you shortly.';
+        document.body.appendChild(note);
+        setTimeout(()=>note.remove(),5000);
       }
-    });
-
-    // Step 2 qualification form
-    const qualForm = document.getElementById('qualForm');
-    const qualSuccess = document.getElementById('qualSuccess');
-    qualForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const fd = new FormData(qualForm);
-      const payload = {
-        type: 'qual',
-        ts: new Date().toISOString(),
-        coverage: fd.get('coverage'),
-        term: fd.get('term'),
-        smoker: fd.get('smoker'),
-        health: fd.get('health'),
-        page: location.href
-      };
-      try {
-        await postJSON(FORM_ENDPOINT, payload);
-        qualForm.classList.add('hidden');
-        qualSuccess.classList.remove('hidden');
-      } catch(err) {
-        alert('Submitted. If anything failed, call me at 540-239-4791 and we will finish fast.');
-      }
-    });
-
-    // From success card to Step 2
-    document.getElementById('openStep2')?.addEventListener('click', () => {
-      document.getElementById('quote').scrollIntoView({ behavior: 'smooth' });
+    })();
     });
   </script></body>
 </html>
