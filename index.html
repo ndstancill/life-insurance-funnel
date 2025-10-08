@@ -1,105 +1,167 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Life Insurance Quote | Dail Stancill</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Insurance Quote | Dail Stancill</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f4f4f4; }
+        h1 { color: #333; text-align: center; }
+        .step { display: none; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .step.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
+        button { background: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin: 10px 0; }
+        button:hover { background: #0056b3; }
+        .progress { text-align: center; margin: 20px 0; }
+        .progress-bar { background: #ddd; height: 5px; border-radius: 5px; overflow: hidden; }
+        .progress-fill { background: #007bff; height: 100%; transition: width 0.3s; }
+        .error { color: red; font-size: 0.9em; margin-top: 5px; }
+        footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #666; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-  <!-- Header -->
-  <div class="w-full bg-slate-900 text-white text-sm py-2">
-    <div class="max-w-3xl mx-auto px-4 flex items-center justify-between">
-      <p>Licensed agent: <b>Dail Stancill, PE • VA</b></p>
-      <a class="underline" href="tel:15402394791">Call: 540-239-4791</a>
-    </div>
-  </div>
-
-  <!-- Hero -->
-  <section class="max-w-3xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold">
-      Lock in your life insurance rate in <span class="underline decoration-emerald-400">60 seconds</span>.
-    </h1>
-    <p class="mt-3">Instant options from A+ carriers. No medical exam. Local, licensed help.</p>
-    <ul class="mt-4 space-y-1">
-      <li>✔ Protect income, mortgage & debts</li>
-      <li>✔ Same-day approvals available</li>
-      <li>✔ Compare multiple carriers — your choice</li>
-    </ul>
-  </section>
-
-  <!-- QUOTE FORM -->
-  <section id="quick-quote" class="max-w-3xl mx-auto px-4">
-    <div class="bg-white border rounded-2xl p-5 shadow">
-      <h2 class="text-xl font-semibold mb-3">Get your 60-second quote</h2>
-
-      <!-- ✅ This posts to FormSubmit and returns to your page -->
-      <form action="https://formsubmit.co/el/fihide" method="POST" class="grid gap-3">
-        <input type="hidden" name="_subject" value="New Life Insurance Lead">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/#quick-quote">
-
-        <input class="border rounded-xl px-4 py-3" name="Full Name" placeholder="Full name" required>
-        <input class="border rounded-xl px-4 py-3" name="Phone" placeholder="Mobile phone" required>
-        <input class="border rounded-xl px-4 py-3" type="email" name="Email" placeholder="Email (optional)">
-        <div class="grid grid-cols-2 gap-3">
-          <input class="border rounded-xl px-4 py-3" name="ZIP" placeholder="ZIP" required>
-          <select class="border rounded-xl px-4 py-3" name="Age Range" required>
-            <option value="" disabled selected>Age</option>
-            <option>18-24</option><option>25-34</option><option>35-44</option>
-            <option>45-54</option><option>55-64</option><option>65+</option>
-          </select>
+<body>
+    <h1>Lock in Your Life Insurance Rate in 60 Seconds</h1>
+    <p style="text-align: center;">Instant options from A+ carriers. No medical exam. Local, licensed help from Dail Stancill, PE • VA.</p>
+    
+    <div class="progress">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
         </div>
-
-        <button class="bg-emerald-500 hover:bg-emerald-400 text-white font-semibold rounded-xl px-6 py-3">
-          Get My Instant Options
-        </button>
-      </form>
-
-      <p class="text-xs text-slate-500 mt-2">
-        By submitting, you agree to get a personal reply from Dail by phone/text. No spam.
-      </p>
-
-      <!-- SMS fallback -->
-      <a class="mt-3 inline-block bg-slate-900 text-white rounded-xl px-4 py-2"
-         href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote.">
-         📲 Or text me my quote
-      </a>
+        <p id="progressText">Step 1 of 3</p>
     </div>
-  </section>
 
-  <!-- Partner Links -->
-  <section class="max-w-3xl mx-auto px-4 py-8">
-    <h3 class="text-xl font-semibold mb-3">Prefer to start on a partner site?</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-      <a class="border rounded-xl p-4 hover:shadow" href="https://ethoslife.com" target="_blank" rel="noopener">
-        <b>Ethos</b><div class="text-sm text-slate-600">Term & Final Expense</div>
-      </a>
-      <a class="border rounded-xl p-4 hover:shadow" href="https://back9ins.com" target="_blank" rel="noopener">
-        <b>Back9</b><div class="text-sm text-slate-600">Multi-Carrier Quotes</div>
-      </a>
-      <a class="border rounded-xl p-4 hover:shadow" href="https://hellosimplicity.com" target="_blank" rel="noopener">
-        <b>Simplicity</b><div class="text-sm text-slate-600">No-Exam Policies</div>
-      </a>
-      <a class="border rounded-xl p-4 hover:shadow" href="https://policygenius.com/life-insurance/" target="_blank" rel="noopener">
-        <b>Policygenius</b><div class="text-sm text-slate-600">Compare Rates</div>
-      </a>
+    <!-- Step 1: Basic Info -->
+    <div id="step1" class="step active">
+        <h2>Step 1: Your Basics</h2>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="number" id="age" placeholder="Age" min="18" max="100" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <button onclick="nextStep(1)">Next: Coverage Needs</button>
+        <div id="error1" class="error"></div>
     </div>
-  </section>
 
-  <!-- Thank-you toast -->
-  <script>
-    (function () {
-      const p = new URLSearchParams(location.search);
-      if (p.get('submitted') === '1') {
-        const n = document.createElement('div');
-        n.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-3 rounded-xl shadow-lg';
-        n.textContent = 'Thanks! Your request was received — I will text you shortly.';
-        document.body.appendChild(n);
-        setTimeout(() => n.remove(), 5000);
-      }
-    })();
-  </script>
+    <!-- Step 2: Coverage Needs -->
+    <div id="step2" class="step">
+        <h2>Step 2: What You Need</h2>
+        <input type="number" id="coverage" placeholder="Coverage Amount ($)" min="100000" step="10000" required>
+        <select id="term" required>
+            <option value="">Select Term Length</option>
+            <option value="10">10 Years</option>
+            <option value="20">20 Years</option>
+            <option value="30">30 Years</option>
+        </select>
+        <button onclick="nextStep(2)">Next: Review & Submit</button>
+        <button onclick="prevStep(2)">Back</button>
+        <div id="error2" class="error"></div>
+    </div>
+
+    <!-- Step 3: Review & Submit -->
+    <div id="step3" class="step">
+        <h2>Step 3: Review Your Quote Request</h2>
+        <div id="reviewSummary"></div>
+        <p>By submitting, you agree to get a personal reply from Dail by phone/text. No spam. <a href="tel:15402394791">Call: 540-239-4791</a></p>
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"> <!-- Replace with your Formspree ID or other handler -->
+            <input type="hidden" id="formName" name="name">
+            <input type="hidden" id="formAge" name="age">
+            <input type="hidden" id="formEmail" name="email">
+            <input type="hidden" id="formCoverage" name="coverage">
+            <input type="hidden" id="formTerm" name="term">
+            <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
+            <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/thank-you.html"> <!-- Optional redirect -->
+            <button type="submit">Submit for Quote</button>
+        </form>
+        <button onclick="prevStep(3)">Back</button>
+        <div id="error3" class="error"></div>
+    </div>
+
+    <footer>
+        ✔ Protect income, mortgage & debts | ✔ Same-day approvals available | ✔ Compare multiple carriers — your choice
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function updateProgress() {
+            const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = `Step ${currentStep} of ${totalSteps}`;
+        }
+
+        function showStep(step) {
+            for (let i = 1; i <= totalSteps; i++) {
+                document.getElementById(`step${i}`).classList.toggle('active', i === step);
+            }
+            currentStep = step;
+            updateProgress();
+        }
+
+        function validateStep(step) {
+            const errorEl = document.getElementById(`error${step}`);
+            errorEl.textContent = '';
+            let valid = true;
+
+            if (step === 1) {
+                if (!document.getElementById('name').value.trim()) { errorEl.textContent = 'Name is required'; valid = false; }
+                if (!document.getElementById('age').value || document.getElementById('age').value < 18) { errorEl.textContent += ' Age must be 18+'; valid = false; }
+                if (!document.getElementById('email').value.includes('@')) { errorEl.textContent += ' Valid email required'; valid = false; }
+            } else if (step === 2) {
+                if (!document.getElementById('coverage').value || document.getElementById('coverage').value < 100000) { errorEl.textContent = 'Coverage must be at least $100,000'; valid = false; }
+                if (!document.getElementById('term').value) { errorEl.textContent += ' Term length required'; valid = false; }
+            }
+
+            return valid;
+        }
+
+        function nextStep(step) {
+            if (!validateStep(step)) return;
+            if (step < totalSteps) {
+                showStep(step + 1);
+            } else {
+                // Auto-advance to review if on step 3, but it's already there
+                populateReview();
+            }
+        }
+
+        function prevStep(step) {
+            if (step > 1) showStep(step - 1);
+        }
+
+        function populateReview() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
+            const coverage = document.getElementById('coverage').value;
+            const term = document.getElementById('term').value;
+
+            document.getElementById('reviewSummary').innerHTML = `
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Age:</strong> ${age}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Coverage:</strong> $${coverage.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                <p><strong>Term:</strong> ${term} Years</p>
+            `;
+
+            // Populate hidden form fields
+            document.getElementById('formName').value = name;
+            document.getElementById('formAge').value = age;
+            document.getElementById('formEmail').value = email;
+            document.getElementById('formCoverage').value = coverage;
+            document.getElementById('formTerm').value = term;
+        }
+
+        // Form submission handler (optional: add AJAX if needed)
+        document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            if (!validateStep(3)) {
+                e.preventDefault();
+                return false;
+            }
+            // Optionally show a loading state or use fetch for AJAX submit
+        });
+
+        // Initial progress
+        updateProgress();
+    </script>
 </body>
 </html>
