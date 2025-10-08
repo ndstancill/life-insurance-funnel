@@ -22,6 +22,25 @@
         .btn-back:hover { background: #545b62; }
     </style>
 </head>
+    <!-- Spacer so the floating bar doesn't cover content -->
+<div class="h-20 sm:hidden"></div>
+    <!-- Mobile floating action bar -->
+<div class="fixed inset-x-0 bottom-3 z-50 px-4 sm:hidden" aria-label="Quick actions">
+  <div class="mx-auto max-w-3xl flex gap-3">
+    <!-- Call -->
+    <a href="tel:15402394791"
+       class="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl shadow-lg transition"
+       aria-label="Call Dail Stancill">
+      <span>📞</span><span>Call Dail</span>
+    </a>
+    <!-- Text (SMS) -->
+    <a href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote."
+       class="flex-1 inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-xl shadow-lg transition"
+       aria-label="Text Dail for a quote">
+      <span>💬</span><span>Text Quote</span>
+    </a>
+  </div>
+</div>
 <body>
     <h1>Lock in Your Life Insurance Rate in 60 Seconds</h1>
     <p style="text-align: center;">Instant options from A+ carriers. No medical exam. Local, licensed help from Dail Stancill, PE • VA.</p>
