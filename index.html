@@ -18,6 +18,8 @@
         .progress-fill { background: #007bff; height: 100%; transition: width 0.3s; }
         .error { color: red; font-size: 0.9em; margin-top: 5px; }
         footer { text-align: center; margin-top: 20px; font-size: 0.8em; color: #666; }
+        .btn-back { background: #6c757d; }
+        .btn-back:hover { background: #545b62; }
     </style>
 </head>
 <body>
@@ -52,7 +54,7 @@
             <option value="30">30 Years</option>
         </select>
         <button onclick="nextStep(2)">Next: Review & Submit</button>
-        <button onclick="prevStep(2)">Back</button>
+        <button class="btn-back" onclick="prevStep(2)">Back</button>
         <div id="error2" class="error"></div>
     </div>
 
@@ -61,17 +63,36 @@
         <h2>Step 3: Review Your Quote Request</h2>
         <div id="reviewSummary"></div>
         <p>By submitting, you agree to get a personal reply from Dail by phone/text. No spam. <a href="tel:15402394791">Call: 540-239-4791</a></p>
-        <form id="quoteForm" action="https://formspree.io/f/https://formsubmit.co/el/fihide" method="POST"> <!-- Replace with your Formspree ID -->
+        
+        <!-- CHOOSE ONE OPTION BELOW -->
+
+        <!-- OPTION 1: FormSubmit (Recommended - easier setup) -->
+        <form id="quoteForm" action="https://formsubmit.co/ndstancill@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
             <input type="hidden" id="formName" name="name">
             <input type="hidden" id="formAge" name="age">
             <input type="hidden" id="formEmail" name="email">
             <input type="hidden" id="formCoverage" name="coverage">
             <input type="hidden" id="formTerm" name="term">
-            <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
-            <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/thank-you.html"> <!-- Optional redirect -->
             <button type="submit">Submit for Quote</button>
         </form>
-        <button onclick="prevStep(3)">Back</button>
+
+        <!-- OPTION 2: Formspree (If you prefer Formspree) -->
+        <!-- 
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_ACTUAL_FORMSPREE_ID" method="POST">
+            <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
+            <input type="hidden" id="formName" name="name">
+            <input type="hidden" id="formAge" name="age">
+            <input type="hidden" id="formEmail" name="email">
+            <input type="hidden" id="formCoverage" name="coverage">
+            <input type="hidden" id="formTerm" name="term">
+            <button type="submit">Submit for Quote</button>
+        </form>
+        -->
+
+        <button class="btn-back" onclick="prevStep(3)">Back</button>
         <div id="error3" class="error"></div>
     </div>
 
@@ -112,8 +133,6 @@
             } else if (step === 2) {
                 if (!document.getElementById('coverage').value || document.getElementById('coverage').value < 100000) { errorEl.textContent += ' Coverage must be at least $100,000.'; valid = false; }
                 if (!document.getElementById('term').value) { errorEl.textContent += ' Term length required.'; valid = false; }
-            } else if (step === 3) {
-                // Optional: No inputs, so always valid; add checks if needed (e.g., re-validate all)
             }
 
             return valid;
@@ -139,7 +158,7 @@
                 <p><strong>Name:</strong> ${name}</p>
                 <p><strong>Age:</strong> ${age}</p>
                 <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Coverage:</strong> $${coverage.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
+                <p><strong>Coverage:</strong> $${Number(coverage).toLocaleString()}</p>
                 <p><strong>Term:</strong> ${term} Years</p>
             `;
 
@@ -151,13 +170,16 @@
             document.getElementById('formTerm').value = term;
         }
 
-        // Form submission handler (optional: add AJAX if needed)
+        // Form submission handler
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
             if (!validateStep(3)) {
                 e.preventDefault();
                 return false;
             }
-            // Optionally show a loading state or use fetch for AJAX submit
+            // Optional: Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
         });
 
         // Initial progress
