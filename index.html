@@ -61,7 +61,7 @@
         <h2>Step 3: Review Your Quote Request</h2>
         <div id="reviewSummary"></div>
         <p>By submitting, you agree to get a personal reply from Dail by phone/text. No spam. <a href="tel:15402394791">Call: 540-239-4791</a></p>
-        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"> <!-- Replace with your Formspree ID or other handler -->
+        <form id="quoteForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST"> <!-- Replace with your Formspree ID -->
             <input type="hidden" id="formName" name="name">
             <input type="hidden" id="formAge" name="age">
             <input type="hidden" id="formEmail" name="email">
@@ -94,6 +94,9 @@
                 document.getElementById(`step${i}`).classList.toggle('active', i === step);
             }
             currentStep = step;
+            if (step === 3) {
+                populateReview();
+            }
             updateProgress();
         }
 
@@ -103,12 +106,14 @@
             let valid = true;
 
             if (step === 1) {
-                if (!document.getElementById('name').value.trim()) { errorEl.textContent = 'Name is required'; valid = false; }
-                if (!document.getElementById('age').value || document.getElementById('age').value < 18) { errorEl.textContent += ' Age must be 18+'; valid = false; }
-                if (!document.getElementById('email').value.includes('@')) { errorEl.textContent += ' Valid email required'; valid = false; }
+                if (!document.getElementById('name').value.trim()) { errorEl.textContent += ' Name is required.'; valid = false; }
+                if (!document.getElementById('age').value || document.getElementById('age').value < 18) { errorEl.textContent += ' Age must be 18+.'; valid = false; }
+                if (!document.getElementById('email').value.includes('@')) { errorEl.textContent += ' Valid email required.'; valid = false; }
             } else if (step === 2) {
-                if (!document.getElementById('coverage').value || document.getElementById('coverage').value < 100000) { errorEl.textContent = 'Coverage must be at least $100,000'; valid = false; }
-                if (!document.getElementById('term').value) { errorEl.textContent += ' Term length required'; valid = false; }
+                if (!document.getElementById('coverage').value || document.getElementById('coverage').value < 100000) { errorEl.textContent += ' Coverage must be at least $100,000.'; valid = false; }
+                if (!document.getElementById('term').value) { errorEl.textContent += ' Term length required.'; valid = false; }
+            } else if (step === 3) {
+                // Optional: No inputs, so always valid; add checks if needed (e.g., re-validate all)
             }
 
             return valid;
@@ -116,12 +121,7 @@
 
         function nextStep(step) {
             if (!validateStep(step)) return;
-            if (step < totalSteps) {
-                showStep(step + 1);
-            } else {
-                // Auto-advance to review if on step 3, but it's already there
-                populateReview();
-            }
+            showStep(step + 1);
         }
 
         function prevStep(step) {
