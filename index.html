@@ -1,291 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Virginia Life Insurance Quote in 60 Seconds | Dail Stancill</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Life Insurance Quote Online | Licensed in VA, CA, FL, TX, GA, PA, WV, SC, NC, AL</title>
 
-  <!-- Basic SEO -->
-  <meta name="description" content="Get your Virginia life insurance quote in 60 seconds. Instant options from A+ carriers. No medical exam. Local, licensed help from Dail Stancill, PE • VA." />
-  <link rel="canonical" href="https://ndstancill.github.io/life-insurance-funnel/" />
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Get your life insurance quote in 60 seconds with Dail Stancill, PE — a licensed agent in 10 states. No exams, instant options from A+ carriers, and personalized help by phone or online." />
+  <meta name="keywords" content="life insurance quote online, no exam life insurance, instant quote, term life insurance VA CA FL TX GA PA WV SC NC AL, Dail Stancill PE, licensed life insurance agent" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Virginia Life Insurance Quote in 60 Seconds" />
-  <meta property="og:description" content="Instant options from A+ carriers. No medical exam. Local, licensed help from Dail Stancill, PE • VA." />
-  <meta property="og:type" content="website" />
+  <!-- Open Graph / Twitter Card -->
+  <meta property="og:title" content="Get Your Instant Life Insurance Quote Online" />
+  <meta property="og:description" content="Licensed in 10 states — get a 60-second life insurance quote from Dail Stancill, PE. No medical exam, instant options, and local help." />
+  <meta property="og:image" content="https://ndstancill.github.io/life-insurance-funnel/og-image.jpg" />
   <meta property="og:url" content="https://ndstancill.github.io/life-insurance-funnel/" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Tailwind CSS -->
+  <!-- TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Google Site Verification (keep this for SEO verification) -->
+  <meta name="google-site-verification" content="YOUR_VERIFICATION_TAG_HERE" />
+
   <style>
-    /* simple step visibility helper */
-    .step.hidden { display: none; }
+    body { background: #f9fafb; color: #111827; font-family: system-ui, sans-serif; }
+    .btn-primary { background: #007bff; color: white; padding: 12px 20px; border-radius: 8px; font-weight: 600; }
+    .btn-primary:hover { background: #0056b3; }
+    .floating-btn { position: fixed; bottom: 16px; border-radius: 9999px; padding: 10px 20px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .call-btn { left: 16px; background: #047857; color: white; }
+    .call-btn:hover { background: #065f46; }
+    .text-btn { right: 16px; background: #111827; color: white; }
+    .text-btn:hover { background: #1f2937; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
 
-  <!-- Top utility links -->
-  <div class="max-w-3xl mx-auto px-4 pt-3 flex items-center gap-6 text-sm">
-    <a class="underline inline-flex items-center gap-1" href="tel:15402394791">📞 Call Dail</a>
-    <a class="underline inline-flex items-center gap-1" href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote.">💬 Text Quote</a>
-  </div>
+<body class="max-w-xl mx-auto px-4 pb-24">
+  <!-- Header -->
+  <header class="text-center py-4">
+    <div class="flex justify-center gap-4 text-sm">
+      <a href="tel:15402394791" class="flex items-center gap-1 text-gray-700 hover:text-blue-600">
+        ☎️ <span>Call Dail</span>
+      </a>
+      <a href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote." class="flex items-center gap-1 text-gray-700 hover:text-blue-600">
+        💬 <span>Text Quote</span>
+      </a>
+    </div>
+  </header>
 
   <!-- Hero -->
-  <section class="max-w-3xl mx-auto px-4 py-6">
-    <h1 class="text-4xl font-extrabold leading-tight">
-      Lock in Your Life Insurance Rate in 60 Seconds
+  <section class="text-center mb-6">
+    <h1 class="text-3xl font-bold mb-3">
+      Get Your Life Insurance Quote in 60 Seconds — Licensed in 10 States
     </h1>
-    <p class="mt-3 text-lg text-slate-700">
-      Instant options from A+ carriers. No medical exam. Local, licensed help from Dail Stancill, PE • VA.
+    <p class="text-gray-700">
+      Instant, no-exam life insurance options from A+ carriers. Licensed agent <b>Dail Stancill, PE</b> helps families in
+      <b>VA, CA, FL, TX, GA, PA, WV, SC, NC, and AL</b>.
     </p>
   </section>
 
-  <!-- Progress + Wizard -->
-  <section class="max-w-xl mx-auto px-4 pb-28">
-    <!-- Progress -->
-    <div class="text-center my-4">
-      <div class="h-1.5 w-full bg-slate-200 rounded overflow-hidden">
-        <div id="progressFill" class="h-full w-1/3 bg-blue-600 transition-all"></div>
-      </div>
-      <p id="progressText" class="mt-2 text-sm text-slate-600">Step 1 of 3</p>
-    </div>
+  <!-- Step Progress -->
+  <div class="text-center text-sm text-gray-600 mb-2">Step <span id="stepNumber">1</span> of 3</div>
+  <div class="h-2 w-full bg-gray-200 rounded-full mb-4">
+    <div id="progressBar" class="h-2 bg-blue-500 rounded-full" style="width: 33%;"></div>
+  </div>
 
-    <!-- Step 1 -->
-    <div id="step1" class="step bg-white rounded-xl shadow p-5">
-      <h2 class="text-xl font-semibold mb-3">Step 1: Your Basics</h2>
-      <input id="name" type="text" placeholder="Full Name"
-             class="w-full rounded-lg border border-slate-300 px-4 py-3 mb-3" required>
-      <input id="age" type="number" placeholder="Age" min="18" max="100"
-             class="w-full rounded-lg border border-slate-300 px-4 py-3 mb-3" required>
-      <input id="email" type="email" placeholder="Email"
-             class="w-full rounded-lg border border-slate-300 px-4 py-3 mb-4" required>
+  <!-- Step 1 -->
+  <div id="step1" class="bg-white rounded-xl p-4 shadow mb-4">
+    <h2 class="text-xl font-semibold mb-3">Step 1: Your Basics</h2>
+    <input type="text" id="name" placeholder="Full Name" class="border w-full rounded-lg px-3 py-2 mb-2" />
+    <input type="number" id="age" placeholder="Age" min="18" max="100" class="border w-full rounded-lg px-3 py-2 mb-2" />
+    <input type="email" id="email" placeholder="Email" class="border w-full rounded-lg px-3 py-2 mb-2" />
+    <button onclick="nextStep(1)" class="btn-primary w-full">Next: Coverage Needs</button>
+  </div>
 
-      <button onclick="nextStep(1)"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-4 py-3">
-        Next: Coverage Needs
-      </button>
-      <div id="error1" class="text-red-600 text-sm mt-2"></div>
-    </div>
-
-    <!-- Step 2 -->
-    <div id="step2" class="step hidden bg-white rounded-xl shadow p-5 mt-4">
-      <h2 class="text-xl font-semibold mb-3">Step 2: What You Need</h2>
-
-      <input id="coverage" type="number" placeholder="Coverage Amount ($)" min="100000" step="10000"
-             class="w-full rounded-lg border border-slate-300 px-4 py-3 mb-3" required>
-
-      <select id="term" class="w-full rounded-lg border border-slate-300 px-4 py-3 mb-4" required>
-        <option value="">Select Term Length</option>
-        <option value="10">10 Years</option>
-        <option value="20">20 Years</option>
-        <option value="30">30 Years</option>
-      </select>
-
-      <div class="grid grid-cols-2 gap-3">
-        <button onclick="prevStep(2)"
-                class="w-full bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-lg px-4 py-3">
-          Back
-        </button>
-        <button onclick="nextStep(2)"
-                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg px-4 py-3">
-          Next: Review & Submit
-        </button>
-      </div>
-
-      <div id="error2" class="text-red-600 text-sm mt-2"></div>
-    </div>
-
-    <!-- Step 3 -->
-    <div id="step3" class="step hidden bg-white rounded-xl shadow p-5 mt-4">
-      <h2 class="text-xl font-semibold mb-3">Step 3: Review Your Quote Request</h2>
-
-      <div id="reviewSummary" class="text-slate-700 text-sm bg-slate-50 border border-slate-200 rounded p-3 mb-4"></div>
-      <p class="text-xs text-slate-500 mb-3">
-        By submitting, you agree to get a personal reply from Dail by phone/text. No spam.
-        <a href="tel:15402394791" class="underline">Call: 540-239-4791</a>
-      </p>
-
-      <!-- FormSubmit (emails Dail) -->
-      <form id="quoteForm" action="https://formsubmit.co/dail.stancill@gmail.com" method="POST" class="mb-3">
-        <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://ndstancill.github.io/life-insurance-funnel/?submitted=1#quick-quote">
-
-        <input type="hidden" id="formName" name="name">
-        <input type="hidden" id="formAge" name="age">
-        <input type="hidden" id="formEmail" name="email">
-        <input type="hidden" id="formCoverage" name="coverage">
-        <input type="hidden" id="formTerm" name="term">
-
-        <button type="submit"
-                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg px-4 py-3">
-          Submit for Quote
-        </button>
-      </form>
-
-      <button onclick="prevStep(3)"
-              class="w-full bg-slate-600 hover:bg-slate-700 text-white font-semibold rounded-lg px-4 py-3">
-        Back
-      </button>
-
-      <div id="error3" class="text-red-600 text-sm mt-2"></div>
-    </div>
-  </section>
-
-  <!-- Creds card -->
-  <section class="max-w-3xl mx-auto px-4">
-    <div class="bg-white border rounded-xl p-5 text-center mb-4">
-      <p><b>Dail Stancill, PE</b> • Licensed Virginia Life Insurance Agent</p>
-      <p class="text-slate-700 mt-2">
-        Helping Virginia families secure affordable term and permanent life insurance since 2021.
-        Compare options from Ethos, Back9, Simplicity, and Policygenius in one place.
-      </p>
-    </div>
-  </section>
-
-  <!-- Partners -->
-  <section class="max-w-3xl mx-auto px-4 pb-32">
-    <h3 class="text-2xl font-bold mb-4 text-center">Prefer to start on a partner site?</h3>
-
-    <div class="grid gap-4">
-      <a class="flex flex-col items-start p-5 rounded-2xl text-white bg-emerald-700 hover:bg-emerald-600 shadow"
-         href="https://agents.ethoslife.com/invite/36289" target="_blank" rel="noopener">
-        <div class="text-2xl font-semibold">🧳 Ethos</div>
-        <div class="text-sm opacity-90">Term &amp; Final Expense</div>
-      </a>
-
-      <a class="flex flex-col items-start p-5 rounded-2xl text-white bg-blue-700 hover:bg-blue-600 shadow"
-         href="https://app.back9ins.com/apply/NathanStancill" target="_blank" rel="noopener">
-        <div class="text-2xl font-semibold">🏦 Back9</div>
-        <div class="text-sm opacity-90">Multi-Carrier Quotes</div>
-      </a>
-
-      <a class="flex flex-col items-start p-5 rounded-2xl text-white bg-indigo-700 hover:bg-indigo-600 shadow"
-         href="https://lifelink.simplicitygroup.com/agent/stancill-5834?product=accelerated" target="_blank" rel="noopener">
-        <div class="text-2xl font-semibold">⚡ Simplicity</div>
-        <div class="text-sm opacity-90">No-Exam (Accelerated)</div>
-      </a>
-
-      <a class="flex flex-col items-start p-5 rounded-2xl text-white bg-orange-600 hover:bg-orange-500 shadow"
-         href="https://www.policygenius.com/pro/referral/stancill?advisor=Nathan%20Dail-Stancill&uuid=a1ffc1ff-8a95-40a3-92b4-6ba5107c2a12"
-         target="_blank" rel="noopener">
-        <div class="text-2xl font-semibold">📊 Policygenius</div>
-        <div class="text-sm opacity-90">Compare Rates</div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Sticky Call/Text CTA -->
-  <div class="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 w-[92%] max-w-3xl">
-    <div class="grid grid-cols-2 gap-3">
-      <a href="tel:15402394791"
-         class="flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold rounded-2xl py-3 shadow">
-        ☎️ Call Dail
-      </a>
-      <a href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote."
-         class="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-2xl py-3 shadow">
-        💬 Text Quote
-      </a>
+  <!-- Step 2 -->
+  <div id="step2" class="bg-white rounded-xl p-4 shadow mb-4 hidden">
+    <h2 class="text-xl font-semibold mb-3">Step 2: What You Need</h2>
+    <input type="number" id="coverage" placeholder="Coverage Amount ($)" class="border w-full rounded-lg px-3 py-2 mb-2" />
+    <select id="term" class="border w-full rounded-lg px-3 py-2 mb-2">
+      <option value="">Select Term Length</option>
+      <option>10 Years</option><option>20 Years</option><option>30 Years</option>
+    </select>
+    <div class="flex justify-between gap-2">
+      <button onclick="prevStep(2)" class="bg-gray-500 text-white rounded-lg px-4 py-2">Back</button>
+      <button onclick="nextStep(2)" class="btn-primary flex-1">Next: Review & Submit</button>
     </div>
   </div>
 
-  <!-- Toast after submit -->
-  <script>
-    (function () {
-      const p = new URLSearchParams(location.search);
-      if (p.get('submitted') === '1') {
-        const n = document.createElement('div');
-        n.className = 'fixed bottom-20 left-1/2 -translate-x-1/2 bg-emerald-600 text-white px-4 py-3 rounded-xl shadow-lg';
-        n.textContent = 'Thanks! Your request was received — I will text you shortly.';
-        document.body.appendChild(n);
-        setTimeout(() => n.remove(), 5000);
-      }
-    })();
-  </script>
+  <!-- Step 3 -->
+  <div id="step3" class="bg-white rounded-xl p-4 shadow mb-4 hidden">
+    <h2 class="text-xl font-semibold mb-3">Step 3: Review & Submit</h2>
+    <div id="reviewSummary" class="text-gray-700 mb-3"></div>
 
-  <!-- Wizard JS -->
-  <script>
-    let currentStep = 1, totalSteps = 3;
+    <form action="https://formsubmit.co/dail.stancill@gmail.com" method="POST" id="quoteForm">
+      <input type="hidden" name="_subject" value="New Life Insurance Quote Request">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" id="formName" name="Name">
+      <input type="hidden" id="formAge" name="Age">
+      <input type="hidden" id="formEmail" name="Email">
+      <input type="hidden" id="formCoverage" name="Coverage">
+      <input type="hidden" id="formTerm" name="Term">
+      <button type="submit" class="btn-primary w-full">Submit for Quote</button>
+    </form>
 
-    function showStep(n){
-      for (let i=1;i<=totalSteps;i++){
-        const el = document.getElementById(`step${i}`);
-        if (!el) continue;
-        if (i === n){ el.classList.remove('hidden'); }
-        else { el.classList.add('hidden'); }
+    <div class="text-center mt-2">
+      <button onclick="prevStep(3)" class="bg-gray-500 text-white rounded-lg px-4 py-2">Back</button>
+    </div>
+  </div>
+
+  <!-- Agent Bio -->
+  <section class="bg-gray-100 text-center rounded-xl p-4 mb-6">
+    <p><b>Dail Stancill, PE</b> • Licensed Life Insurance Agent in 10 States</p>
+    <p class="text-gray-700 mt-2 text-sm">
+      Helping families secure affordable term and permanent life insurance since 2021.
+      Compare options from <b>Ethos, Back9, Simplicity,</b> and <b>Policygenius</b> in one place.
+    </p>
+  </section>
+
+  <!-- Partner Buttons -->
+  <section>
+    <h3 class="text-xl font-semibold mb-3 text-center">Prefer to start on a partner site?</h3>
+    <div class="flex flex-col gap-3">
+      <a href="https://agents.ethoslife.com/invite/36289" target="_blank" class="block text-white bg-green-700 hover:bg-green-600 rounded-xl p-4 text-center font-semibold">💼 Ethos — Term & Final Expense</a>
+      <a href="https://app.back9ins.com/apply/NathanStancill" target="_blank" class="block text-white bg-blue-700 hover:bg-blue-600 rounded-xl p-4 text-center font-semibold">🏛️ Back9 — Multi-Carrier Quotes</a>
+      <a href="https://lifelink.simplicitygroup.com/agent/stancill-5834?product=accelerated" target="_blank" class="block text-white bg-purple-700 hover:bg-purple-600 rounded-xl p-4 text-center font-semibold">⚡ Simplicity — No-Exam (Accelerated)</a>
+      <a href="https://www.policygenius.com/pro/referral/stancill?advisor=Nathan%20Dail-Stancill&uuid=a1ffc1ff-8a95-40a3-92b4-6ba5107c2a12" target="_blank" class="block text-white bg-orange-600 hover:bg-orange-500 rounded-xl p-4 text-center font-semibold">📊 Policygenius — Compare Rates</a>
+    </div>
+  </section>
+
+  <!-- Floating Call/Text Buttons -->
+  <a href="tel:15402394791" class="floating-btn call-btn">☎️ Call Dail</a>
+  <a href="sms:+15402394791?&body=Hi%20Dail%2C%20please%20send%20my%20life%20insurance%20quote." class="floating-btn text-btn">💬 Text Quote</a>
+
+  <!-- Scripts -->
+  <script>
+    let currentStep = 1;
+    const totalSteps = 3;
+    const updateProgress = () => {
+      document.getElementById("stepNumber").textContent = currentStep;
+      document.getElementById("progressBar").style.width = (currentStep / totalSteps) * 100 + "%";
+    };
+    const showStep = (step) => {
+      for (let i = 1; i <= totalSteps; i++) {
+        document.getElementById(`step${i}`).classList.toggle("hidden", i !== step);
       }
-      currentStep = n;
-      if (n === 3) populateReview();
+      currentStep = step;
       updateProgress();
-    }
-
-    function updateProgress(){
-      const pct = ((currentStep - 1) / (totalSteps - 1)) * 100;
-      document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('progressText').textContent = `Step ${currentStep} of ${totalSteps}`;
-    }
-
-    function validateStep(step){
-      const setErr = (id,msg)=>document.getElementById(id).textContent=msg||'';
-      if (step===1){
-        setErr('error1','');
-        let m=[];
-        if (!document.getElementById('name').value.trim()) m.push('Name is required.');
-        const age = Number(document.getElementById('age').value);
-        if (!age || age < 18) m.push('Age must be 18+.');
-        const em = document.getElementById('email').value;
-        if (!em || !em.includes('@')) m.push('Valid email required.');
-        if (m.length){ setErr('error1', m.join(' ')); return false; }
-      }
-      if (step===2){
-        setErr('error2','');
-        let m=[];
-        const cov = Number(document.getElementById('coverage').value);
-        if (!cov || cov < 100000) m.push('Coverage must be at least $100,000.');
-        if (!document.getElementById('term').value) m.push('Term length required.');
-        if (m.length){ setErr('error2', m.join(' ')); return false; }
-      }
-      return true;
-    }
-
-    function nextStep(n){ if (validateStep(n)) showStep(n+1); }
-    function prevStep(n){ if (n>1) showStep(n-1); }
-
-    function populateReview(){
-      const name = document.getElementById('name').value.trim();
-      const age  = document.getElementById('age').value;
-      const email= document.getElementById('email').value.trim();
-      const cov  = Number(document.getElementById('coverage').value||0);
-      const term = document.getElementById('term').value;
-
-      document.getElementById('reviewSummary').innerHTML = `
+      if (step === 3) populateReview();
+    };
+    const nextStep = (s) => showStep(s + 1);
+    const prevStep = (s) => showStep(s - 1);
+    const populateReview = () => {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const email = document.getElementById("email").value;
+      const coverage = document.getElementById("coverage").value;
+      const term = document.getElementById("term").value;
+      document.getElementById("reviewSummary").innerHTML = `
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Age:</strong> ${age}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Coverage:</strong> $${cov.toLocaleString()}</p>
-        <p><strong>Term:</strong> ${term} Years</p>
-      `;
-
-      document.getElementById('formName').value = name;
-      document.getElementById('formAge').value = age;
-      document.getElementById('formEmail').value = email;
-      document.getElementById('formCoverage').value = cov;
-      document.getElementById('formTerm').value = term;
-    }
-
-    // Disable submit button on send
-    document.addEventListener('DOMContentLoaded', () => {
-      const f = document.getElementById('quoteForm');
-      if (f){
-        f.addEventListener('submit', function(e){
-          const btn = this.querySelector('button[type="submit"]');
-          if (btn){ btn.textContent='Submitting…'; btn.disabled=true; }
-        });
-      }
-      updateProgress(); // initialize
-    });
+        <p><strong>Coverage:</strong> $${Number(coverage).toLocaleString()}</p>
+        <p><strong>Term:</strong> ${term}</p>`;
+      document.getElementById("formName").value = name;
+      document.getElementById("formAge").value = age;
+      document.getElementById("formEmail").value = email;
+      document.getElementById("formCoverage").value = coverage;
+      document.getElementById("formTerm").value = term;
+    };
   </script>
 </body>
 </html>
