@@ -1,72 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Life Insurance Insights Blog | Dail Stancill, PE</title>
-  <meta name="description" content="Expert life insurance insights, state guides, and tips from Dail Stancill, PE. Licensed in VA, CA, FL, TX, GA, PA, WV, SC, NC, and AL.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Life Insurance Tips & State Guides</title>
+  <link rel="canonical" href="https://ndstancill.github.io/life-insurance-funnel/blog/">
+  <meta name="description" content="Learn how to protect your family, compare policies, and understand state-specific life insurance options. Updated regularly by Dail Stancill, PE.">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-
-  <!-- Header -->
-  <header class="bg-gray-900 text-white py-4">
-    <div class="max-w-3xl mx-auto px-4 flex justify-between items-center">
-      <h1 class="text-lg font-semibold">📰 Life Insurance Insights</h1>
-      <a href="https://ndstancill.github.io/life-insurance-funnel/" class="underline hover:text-emerald-400">← Back to Quote Page</a>
+<body class="bg-slate-50 text-slate-900">
+  <header class="bg-slate-900 text-white">
+    <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="font-semibold">📰 Life Insurance Insights</div>
+      <a href="../" class="underline">← Back to Quote Page</a>
     </div>
   </header>
 
-  <!-- Blog Intro -->
-  <section class="max-w-3xl mx-auto px-4 py-8">
-    <h2 class="text-3xl font-bold mb-2">Life Insurance Tips & State Guides</h2>
-    <p class="text-gray-600 mb-6">
-      Learn how to protect your family, compare policies, and understand state-specific insurance options. 
-      Updated regularly by <strong>Dail Stancill, PE</strong> — licensed in VA, CA, FL, TX, GA, PA, WV, SC, NC, and AL.
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-2">Life Insurance Tips & State Guides</h1>
+    <p class="text-slate-600 mb-6">
+      Learn how to protect your family, compare policies, and understand state-specific
+      insurance options. Updated regularly by <b>Dail Stancill, PE</b> — licensed in VA, CA, FL, TX,
+      GA, PA, WV, SC, NC, and AL.
     </p>
 
-    <!-- Blog Listing -->
-    <div id="blog-list" class="grid gap-6"></div>
-  </section>
+    <div id="posts" class="space-y-4">
+      <!-- Cards will be injected here -->
+    </div>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 text-center py-4 text-sm">
-    © 2025 Dail Stancill | Licensed Life Insurance Agent | <a href="tel:5402394791" class="underline text-white">540-239-4791</a>
-  </footer>
+    <div id="empty" class="hidden text-slate-500 mt-6">
+      No posts found yet. Add blog articles in <code>/blog/</code> and list them in <code>sitemap.xml</code>.
+    </div>
+  </main>
 
-  <!-- JS to Auto-List Posts -->
   <script>
-    // Add your blog posts here (title, file, and summary)
-    const posts = [
-      {
-        title: "Virginia Life Insurance Guide 2025",
-        file: "../Virginalife-insurance.html",
-        summary: "Learn how to find affordable term and permanent life insurance options in Virginia, plus top carriers and rates."
-      },
-      {
-        title: "California Life Insurance: Smart Coverage Choices",
-        file: "../CA-life-insurance.html",
-        summary: "Compare policies and see why California residents benefit from simplified issue and no-exam coverage."
-      },
-      {
-        title: "Texas Life Insurance Made Simple",
-        file: "../Texas-life-insurance.html",
-        summary: "Explore Texas life insurance options and how to qualify for accelerated no-exam policies online."
-      }
-    ];
+    (async () => {
+      // ---- Adjust this if you move repos/paths ----
+      const BASE_PATH = "/life-insurance-funnel"; // if site is at root, set ""
+      const SITEMAP_URL = `${BASE_PATH}/sitemap.xml`;
 
-    const container = document.getElementById('blog-list');
-    posts.forEach(post => {
-      const card = document.createElement('a');
-      card.href = post.file;
-      card.className = 'block bg-white border rounded-xl shadow hover:shadow-md transition p-5';
-      card.innerHTML = `
-        <h3 class="text-xl font-semibold mb-2 text-emerald-700">${post.title}</h3>
-        <p class="text-gray-600 text-sm mb-2">${post.summary}</p>
-        <span class="text-emerald-500 text-sm font-medium">Read more →</span>
-      `;
-      container.appendChild(card);
-    });
+      // Helper: fetch text safely
+      const getText = async (url) => (await fetch(url, { cache: "no-store" })).text();
+
+      // 1) Load sitemap and collect /blog/*.html urls
+      let xml;
+      try {
+        xml = new window.DOMParser().parseFromString(await getText(SITEMAP_URL), "text/xml");
+      } catch (e) {
+        console.warn("Could not load sitemap:", e);
+        document.getElementById("empty").classList.remove("hidden");
+        return;
+      }
+
+      const locs = Array.from(xml.querySelectorAll("url > loc"))
+        .map(n => n.textContent.trim())
+        .filter(u => /\/blog\/.+\.html$/i.test(u));
+
+      if (!locs.length) {
+        document.getElementById("empty").classList.remove("hidden");
+        return;
+      }
+
+      // 2) For each blog url, fetch page and extract <title> + meta description
+      const posts = await Promise.all(locs.map(async (absUrl) => {
+        try {
+          const html = await getText(absUrl);
+          const doc = new DOMParser().parseFromString(html, "text/html");
+          const title = (doc.querySelector("title")?.textContent || "Untitled").trim();
+          const desc =
+            (doc.querySelector('meta[name="description"]')?.getAttribute("content") ||
+             doc.querySelector("p")?.textContent ||
+             "").trim();
+
+          // make relative href for faster nav
+          const rel = absUrl.replace(location.origin, "").replace(BASE_PATH, "").replace(/^\/+/, "");
+          return { title, desc, href: rel ? `./${rel.split("/").pop()}` : absUrl };
+        } catch (e) {
+          console.warn("Failed to parse", absUrl, e);
+          return null;
+        }
+      }));
+
+      // 3) Render cards
+      const container = document.getElementById("posts");
+      const valid = posts.filter(Boolean);
+      if (!valid.length) {
+        document.getElementById("empty").classList.remove("hidden");
+        return;
+      }
+
+      valid.forEach(({ title, desc, href }) => {
+        const card = document.createElement("article");
+        card.className = "bg-white border rounded-2xl p-5 shadow-sm";
+        card.innerHTML = `
+          <h2 class="text-2xl font-semibold">${title}</h2>
+          <p class="text-slate-600 mt-2">${desc || ""}</p>
+          <a class="inline-block mt-3 text-blue-600 font-medium hover:underline" href="${href}">Read more →</a>
+        `;
+        container.appendChild(card);
+      });
+    })();
   </script>
 </body>
 </html>
