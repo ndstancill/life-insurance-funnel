@@ -1,24 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Life Insurance Quotes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Insurance Quotes | Get Covered Today</title>
     <style>
-        body { font-family: Arial; margin: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; }
-        input, button { width: 100%; padding: 10px; margin: 5px 0; }
-        button { background: blue; color: white; border: none; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        p {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #666;
+            font-size: 16px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .benefits {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .benefit-item {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .benefit-item:before {
+            content: "✓";
+            color: #27ae60;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Life Insurance Quotes</h1>
-        <form>
-            <input type="text" placeholder="Name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="tel" placeholder="Phone" required>
-            <input type="text" placeholder="ZIP Code" required>
-            <button type="submit">Get Quote</button>
+        <h1>Get Your Life Insurance Quote</h1>
+        <p>Compare rates from top providers in minutes. No obligation.</p>
+        
+        <form id="insuranceForm">
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+            </div>
+            <div class="form-group">
+                <input type="text" name="zip" placeholder="ZIP Code" required>
+            </div>
+            <button type="submit">Get My Free Quotes</button>
         </form>
+        
+        <div class="benefits">
+            <h3>Why Choose Us?</h3>
+            <div class="benefit-item">Fast approval - get covered in 24 hours</div>
+            <div class="benefit-item">Compare multiple A-rated companies</div>
+            <div class="benefit-item">No medical exam options available</div>
+            <div class="benefit-item">Expert guidance at no extra cost</div>
+        </div>
     </div>
+
+    <script>
+        document.getElementById('insuranceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! We will contact you shortly with your life insurance quotes.');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
