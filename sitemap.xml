@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ndstancill.github.io/life-insurance-funnel/</loc></url>
-  <url><loc>https://ndstancill.github.io/life-insurance-funnel/blog/</loc></url>
-  <url><loc>https://ndstancill.github.io/life-insurance-funnel/blog/virginia-life-insurance.html</loc></url>
-  <url><loc>https://ndstancill.github.io/life-insurance-funnel/blog/california-life-insurance.html</loc></url>
-  <url><loc>https://ndstancill.github.io/life-insurance-funnel/blog/texas-life-insurance.html</loc></url>
+  <url>
+    <loc>https://ndstancill.github.io/life-insurance-funnel/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
 </urlset>
