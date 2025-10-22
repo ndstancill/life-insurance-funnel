@@ -1,31 +1,3 @@
-# robots.txt for https://ndstancill.github.io/life-insurance-funnel/
-# Managed for Dail Stancill, PE — licensed agent in VA, TX, CA, FL, GA, PA, WV, SC, NC, AL
-# Purpose: Allow full crawl of main funnel, state pages, and blog content
-
 User-agent: *
 Allow: /
-
-# Sitemap location (ensures Google + Bing crawl all important URLs)
 Sitemap: https://ndstancill.github.io/life-insurance-funnel/sitemap.xml
-
-# Explicitly list key SEO targets for reinforcement
-Allow: /life-insurance-funnel/
-Allow: /life-insurance-funnel/virginia-life-insurance.html
-Allow: /life-insurance-funnel/texas-life-insurance.html
-Allow: /life-insurance-funnel/california-life-insurance.html
-Allow: /life-insurance-funnel/blog/
-Allow: /life-insurance-funnel/blog/virginia-life-insurance-no-exam.html
-Allow: /life-insurance-funnel/blog/texas-term-life-insurance.html
-Allow: /life-insurance-funnel/blog/california-life-insurance-no-exam.html
-Allow: /life-insurance-funnel/blog/virginia-life-insurance-rates.html
-Allow: /life-insurance-funnel/blog/instant-life-insurance-texas-california.html
-
-# Crawl-delay optional: Uncomment if GitHub Pages throttling or analytics spike
-# Crawl-delay: 10
-
-# Disallow GitHub system folders (no SEO value)
-Disallow: /assets/
-Disallow: /node_modules/
-Disallow: /.github/
-Disallow: /LICENSE
-Disallow: /README.md
