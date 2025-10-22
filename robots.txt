@@ -1,1 +1,3 @@
-
+User-agent: *
+Allow: /
+Sitemap: https://ndstancill.github.io/life-insurance-funnel/sitemap.xml
