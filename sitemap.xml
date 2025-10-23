@@ -6,4 +6,8 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>https://ndstancill.github.io/life-insurance-funnel/critical-illness.html</loc></url>
+  <url><loc>https://ndstancill.github.io/life-insurance-funnel/cancer-insurance.html</loc></url>
+  <url><loc>https://ndstancill.github.io/life-insurance-funnel/hospital-indemnity.html</loc></url>
+  <url><loc>https://ndstancill.github.io/life-insurance-funnel/accident-insurance.html</loc></url>
 </urlset>
