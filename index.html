@@ -532,5 +532,39 @@
   ]
 }
 </script>
+<script>
+  // Helper: safe add event listener
+  const on = (sel, evt, fn) => document.querySelectorAll(sel).forEach(el => el.addEventListener(evt, fn));
+
+  // Call & Text buttons (top, sticky, inside hero)
+  on('a[href^="tel:"]', 'click', e => {
+    gtag('event', 'click_call', { location: 'site' });
+  });
+  on('a[href^="sms:"]', 'click', e => {
+    gtag('event', 'click_text', { location: 'site' });
+  });
+
+  // Partner buttons
+  on('a[href*="ethoslife.com"], a[href*="agents.ethoslife.com"]', 'click', e => {
+    gtag('event', 'partner_click', { partner: 'Ethos' });
+  });
+  on('a[href*="back9ins.com"]', 'click', e => {
+    gtag('event', 'partner_click', { partner: 'Back9' });
+  });
+  on('a[href*="simplicitygroup.com"]', 'click', e => {
+    gtag('event', 'partner_click', { partner: 'Simplicity' });
+  });
+  on('a[href*="policygenius.com"]', 'click', e => {
+    gtag('event', 'partner_click', { partner: 'Policygenius' });
+  });
+
+  // Quick-quote form submit (FormSubmit)
+  const qq = document.querySelector('#quick-quote form');
+  if (qq) {
+    qq.addEventListener('submit', function() {
+      gtag('event', 'lead_submit', { method: 'formsubmit' });
+    });
+  }
+</script>
 </body>
 </html>
